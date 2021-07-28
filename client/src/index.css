@@ -1,0 +1,43 @@
+:root,html[data-theme=dark]{
+  --primary-color: ;
+  --secondary-color: ;
+  --text-color-primary: #fff;
+  --text-color-secondary: #000;
+  --background-color: #191919;
+  
+}
+html[data-theme=light]{
+  --primary-color: #ff5003 ;
+  --secondary-color: #50c594 ;
+  --text-color-primary: #000;
+  --text-color-secondary: #fff;
+  --background-color: #fff ;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: var(--text-color-primary);
+}
+
+html,body{
+  height: 100%;
+}
+#root{
+  height: 100%;
+
+}
+
+body {
+  font-family: "Montserrat",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+}
+

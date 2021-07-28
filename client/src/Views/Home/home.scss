@@ -1,0 +1,14 @@
+.home-container{
+    display: grid;
+    align-content: center;
+    height: 100%;
+}
+
+.home-rankings{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px,450px));
+    margin-top: 2rem;
+    row-gap: 2rem;
+    column-gap: 4rem;
+}
