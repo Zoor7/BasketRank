@@ -22,7 +22,7 @@ const Routes = () => {
     return (
         <AnimatePresence exitBeforeEnter initial={false}>
             <Switch location={location} key={location.pathname}>
-                <Route path="/inicio" component={Home} />
+                <Route path="/" exact component={Home} />
                 <Route path="/jugadores" component={Players} />
                 <Route path="/equipos" component={Teams} />
                 <Route path="/inicio-sesion" component={Login} />
@@ -30,7 +30,7 @@ const Routes = () => {
                 <Route path="/perfil" component={Profile} />
                 <Route path="/chats" component={Chats} />
                 <Route>
-                    <Redirect to='/inicio' />
+                    <Redirect to='/' />
                 </Route>
             </Switch>
         </AnimatePresence>

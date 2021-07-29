@@ -29,8 +29,8 @@ const Header = () => {
                 <nav>
                     <ul>
                         <li>
-                            <NavLink activeClassName='active-nav-link' className='nav-link' to='/inicio'>
-                                {location.pathname === '/inicio' ? <AiFillHome size='1.3rem' /> : <AiOutlineHome size='1.3rem' />}
+                            <NavLink activeClassName='active-nav-link' className='nav-link' to='/' exact>
+                                {location.pathname === '/' ? <AiFillHome size='1.3rem' /> : <AiOutlineHome size='1.3rem' />}
                                 <p>Inicio</p>
                             </NavLink>
                         </li>
