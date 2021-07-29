@@ -21,8 +21,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:ui": "rm -rf build && yarn run build --prod && cp -r build ../server",
+    "deploy": "git push heroku main",
+    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && git push && yarn run deploy",    
+    "logs:prod": "heroku logs --tail"
   },
   "eslintConfig": {
     "extends": [
