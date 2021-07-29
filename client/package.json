@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "build:ui": "rm -rf build && yarn run build --prod && cp -r build ../server",
     "deploy": "git push heroku main",
-    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && git push && yarn run deploy",    
+    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && yarn run deploy",    
     "logs:prod": "heroku logs --tail"
   },
   "eslintConfig": {

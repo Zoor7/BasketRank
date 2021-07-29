@@ -10,7 +10,6 @@ const io = require("socket.io")(server, {
   }
 });
 const mongoose = require('mongoose')
-
 const config =require('./utils/config')
 const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
