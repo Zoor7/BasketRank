@@ -7,7 +7,8 @@
     "start": "SET NODE_ENV=production & node index.js",
     "dev": "SET NODE_ENV=development & nodemon index.js",
     "deploy": "git push heroku master",
-    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && git push && yarn run deploy",
+    "build:ui": "rm -rf build && cd ../client && yarn run build --prod && cp -r build ../server",
+    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && yarn run deploy",
     "logs:prod": "heroku logs --tail",
     "lint": "eslint .",
     "test": "SET NODE_ENV=test & jest --verbose --runInBand"
