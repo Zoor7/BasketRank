@@ -1,0 +1,14 @@
+.pagination-container{
+    display: flex;
+    justify-content: center;
+    
+    li{
+        *{
+            color: white;
+        }
+       button[aria-current="true"]{
+           background-color: #303030;
+       }
+
+    }
+}

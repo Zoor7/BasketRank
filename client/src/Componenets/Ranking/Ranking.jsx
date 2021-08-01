@@ -1,37 +1,45 @@
+import { useEffect,useState } from 'react'
+
 import zoro from '../../assets/images/ojo_izquierdo_zoro_one_piece.jpg_743561205.jpg'
 
 import './ranking.scss'
 
-const Ranking = ({home,players,teams}) => {
+const Ranking = ({home,info}) => {
 
-    const rankingToShow=()=>{
-        if(players){
-            return home?players.players.slice(0,3):players.players
+    const [loading, setLoading] = useState(true)
+    const [isPlayer, setIsPlayer] = useState()
+
+    useEffect(() => {
+
+        if(info?.arr[0]){
+            setIsPlayer(info.setIsPlayer)
+            setLoading(false)
         }
-        return home?teams.players.slice(0,3):teams.players
+
+    }, [info])
+
+    if(loading){
+        return <h1>Cargando</h1>
     }
-
-
     return (
         <div className="ranking-container">
-            <h4>{players?'TOP JUGADORES:':'TOP EQUIPOS:'}</h4>
-            {rankingToShow().map((player,key) => (
+            {info.arr.map((item,key) => (
                 <article key={key}>
                     <div className='ranking-avatar'>
                         <img src={zoro} alt="avatar" />
                     </div>
-                    <div className='ranking-info-player-container'>
+                    <div className='ranking-info-item-container'>
                         <div className="ranking-position">
-                            <p>{player?player.rank:teams.rank}</p>
+                            <p>{item.rank}</p>
                             <p>POS</p>
                         </div>
                         <hr />
-                        <div className="ranking-info-player">
-                            <p className='name'>{player.username}</p>
-                            <div className="ranking-subinfo-player">
-                                <p>{player.team}</p>
+                        <div className="ranking-info-item">
+                            <p className='name'>{item.username}</p>
+                            <div className="ranking-subinfo-item">
+                                <p>{item.team}</p>
                                 <hr />
-                                <p>{player.court}</p>
+                                <p>{item.court}</p>
                             </div>
                         </div>
                     </div>

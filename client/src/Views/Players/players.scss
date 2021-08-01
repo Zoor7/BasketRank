@@ -1,4 +1,12 @@
 .jugadores-container{
-    display: flex;
+    display: grid;
+    place-content: center;
     width: 100%;
+    h4{
+        margin-top: 2rem;
+    }
+    h5{
+        margin: 2rem 0;
+        text-align: center;
+    }
 }

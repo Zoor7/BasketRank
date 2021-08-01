@@ -10,4 +10,10 @@
     grid-template-columns: repeat(auto-fit, minmax(200px,450px));
     row-gap: 2rem;
     column-gap: 4rem;
+    a{
+        display: flex;
+        justify-content: flex-end;
+        font-weight: 600;
+        text-decoration: none;
+    }
 }

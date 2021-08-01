@@ -11,7 +11,7 @@ import GameButton from '../../Componenets/GameButton/GameButton';
 
 const Home = () => {
 
-    const players = info
+    const players = info.players.slice(0,3)
     const [isLogged, setIsLogged] = useState(true)
 
 
@@ -21,10 +21,19 @@ const Home = () => {
             {isLogged
                 ? <div>
                     <PlayerStats />
-                    <GameButton/>
+                    <GameButton />
                     <div className='home-rankings'>
-                        <Ranking home={true} players={players} />
-                        <Ranking home={true} teams={players} />
+                        <div>
+                            <h4>TOP JUGADORES:</h4>
+                            <Ranking home={true} info={{isPlayer:true,arr:players}} />
+                            <a href="/jugadores">más...</a>
+                        </div>
+                        <div>
+                            <h4>TOP EQUIPOS:</h4>
+                            <Ranking home={true} info={{isPlayer:true,arr:players}} />
+                            <a href="/equipos">más...</a>
+                        </div>
+
                     </div>
                 </div>
                 : <NoSesion />

@@ -6,6 +6,7 @@ import './teams.scss'
 const Teams = () => {
     return(
         <motion.div exit={{ opacity: 0 }} className="teams-container">
+            <h4>RANKING EQUIPOS:</h4>
             <Ranking/>
         </motion.div>
     )

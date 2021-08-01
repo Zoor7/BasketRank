@@ -1,0 +1,11 @@
+.searcher-container{
+    display: flex;
+    justify-content: flex-end;
+    input{
+        padding: 0.5rem;
+        color: white;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 10px;
+    }
+}
