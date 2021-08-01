@@ -5,7 +5,10 @@ const uniqueValidator = require('mongoose-unique-validator')
 const playerSchema = new Schema({
     username: { type: String, required: true, maxlength:15,unique:true },
     email: { type: String, required: true },
-    court: { type: String },
+    court: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Court'
+    },
     age: { type: Number },
     avatar:{type: String},
     heigth: { type: Number },

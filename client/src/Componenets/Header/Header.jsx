@@ -9,12 +9,12 @@ import { RiBasketballFill, RiBasketballLine } from 'react-icons/ri';
 import { BsFillPersonFill, BsPerson, BsChat, BsFillChatFill } from 'react-icons/bs';
 import { GiBasketballJersey } from 'react-icons/gi';
 
-import UseWindowSize from '../../Hooks/useWindowSize';
+import useWindowSize from '../../Hooks/useWindowSize';
 
 import './header.scss'
 
 const Header = () => {
-    const windowSize = UseWindowSize()
+    const windowSize = useWindowSize()
     const location = useLocation()
     const [drawerIsOpen, setDrawerIsOpen] = useState(false)
 
@@ -69,7 +69,7 @@ const Header = () => {
     }
 
     return (
-        <header>
+        <div>
             {windowSize.width >= 800
                 ? header()
                 : (<div className='header-mobile'>
@@ -86,7 +86,7 @@ const Header = () => {
                 </div>)
 
             }
-        </header>
+        </div>
 
     )
 }

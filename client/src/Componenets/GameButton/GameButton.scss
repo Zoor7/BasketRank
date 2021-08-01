@@ -1,0 +1,12 @@
+@import '../../Theme/_mixins.scss';
+
+.gamebtn-container{
+    display: flex;
+    justify-content: center;
+    padding:  2rem 0;
+    button{
+        @include button;
+        color: #f06134;
+
+    }
+}

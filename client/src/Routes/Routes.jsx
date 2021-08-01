@@ -13,6 +13,7 @@ import Login from "../Views/Login/Login";
 import Register from "../Views/Register/Register";
 import Profile from "../Views/Perfil/Profile";
 import Chats from "../Views/Chats/Chats";
+import Game from "../Views/Game/Game";
 
 
 const Routes = () => {
@@ -29,6 +30,7 @@ const Routes = () => {
                 <Route path="/registro" component={Register} />
                 <Route path="/perfil" component={Profile} />
                 <Route path="/chats" component={Chats} />
+                <Route path="/partido" component={Game} />
                 <Route>
                     <Redirect to='/' />
                 </Route>

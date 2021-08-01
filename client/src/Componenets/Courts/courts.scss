@@ -1,0 +1,28 @@
+.courts-container{
+    display: grid;
+    place-content: center;
+
+    .court-list{
+        display: grid;
+        row-gap: 1rem;
+        padding: 2rem;
+    }
+
+
+    .court-item{
+        cursor: pointer;
+        text-align: left;
+        background: none;
+        text-transform: capitalize;
+        padding: 0.5rem 1rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        transition: all 0.1s linear;
+        &:hover{
+            background-color: #303030;
+            transform: translateX(0.5rem);
+        }
+        
+    }
+
+}

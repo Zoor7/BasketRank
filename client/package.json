@@ -20,10 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "git push heroku main",
-    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && yarn run deploy",    
-    "logs:prod": "heroku logs --tail"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [

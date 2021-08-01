@@ -14,11 +14,13 @@ function App() {
   return (
     <Router>
       <div className="app">
-        <Header />
+        <header>
+          <Header />
+        </header>
         <main>
           <Switch>
             <Route path='*'>
-              <Routes/>
+              <Routes />
             </Route>
           </Switch>
         </main>

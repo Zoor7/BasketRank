@@ -1,4 +1,4 @@
-import UseWindowSize from '../../Hooks/useWindowSize';
+import useWindowSize from '../../Hooks/useWindowSize';
 import { motion } from 'framer-motion';
 
 import ruckerpark from '../../assets/images/ruckerpark.jpg'
@@ -10,7 +10,7 @@ import './noSesion.scss'
 const NoSesion = () => {
 
 
-    const { width } = UseWindowSize()
+    const { width } = useWindowSize()
 
     return (
         <motion.div exit={{ opacity: 0 }} className="noSesion-container">

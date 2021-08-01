@@ -1,0 +1,10 @@
+@import '../../../Theme/mixins';
+
+.createJoin-container{
+    display: grid;
+    place-content: center;
+    row-gap: 3rem;
+    button{
+        @include button;
+    }
+}

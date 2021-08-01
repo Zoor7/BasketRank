@@ -6,12 +6,13 @@ import info from '../../utils/info.json'
 
 import './home.scss'
 import NoSesion from '../noSesion/NoSesion';
+import GameButton from '../../Componenets/GameButton/GameButton';
 
 
 const Home = () => {
 
     const players = info
-    const [isLogged, setIsLogged] = useState(false)
+    const [isLogged, setIsLogged] = useState(true)
 
 
 
@@ -20,6 +21,7 @@ const Home = () => {
             {isLogged
                 ? <div>
                     <PlayerStats />
+                    <GameButton/>
                     <div className='home-rankings'>
                         <Ranking home={true} players={players} />
                         <Ranking home={true} teams={players} />
