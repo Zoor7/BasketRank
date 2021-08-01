@@ -1,5 +1,5 @@
 // const BASEURL = `${process.env.REACT_APP_BASEURL}/court`
-const BASEURL = `http://localhost:4000/api/court`
+const BASEURL = `https://basketrank.herokuapp.com/api/court`
 
 
 export const getCourts = async () => {
