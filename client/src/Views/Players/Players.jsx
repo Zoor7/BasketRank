@@ -1,41 +1,54 @@
 import { useState, useEffect } from 'react'
-
-
 import { motion } from 'framer-motion';
 import Ranking from '../../Componenets/Ranking/Ranking';
 import { Searcher } from '../../Componenets/Searcher/Searcher';
-
-import info from '../../utils/info.json'
+import PaginationUI from '../../Componenets/Pagination/Pagination';
+import { getPlayers, getPlayersByName } from '../../services/players';
 
 import './players.scss'
-import PaginationUI from '../../Componenets/Pagination/Pagination';
-import { sliceIntoChunks } from '../../utils/sliceArray';
 
 const Players = () => {
-    const [slicedPlayers, setSlicedPlayers] = useState()
-    const [pagination, setPagination] = useState({ current: 0, total: '' })
+    const [players, setPlayers] = useState()
+    const [pagination, setPagination] = useState({ current: 1, total: '',isSearch:false,query:'' })
+
+    const fetchPlayers = async (skip) => {
+        const fetchedPlayers = await getPlayers(skip * 5, 5)
+        setPlayers(fetchedPlayers.players)
+        setPagination((prev) => { return { ...prev,current:skip+1, total: fetchedPlayers.totalPages,isSearch:false } })
+    }
+    const fetchPlayersByName = async (skip,query) => {
+        const players = await getPlayersByName(query, skip * 5, 5)
+        setPlayers(players.players)
+        setPagination(prev=>{return{...prev, current: skip+1, total: players.totalPages,isSearch:true,query }})
+        return
+    }
+    const nextPage = async (page, isSearch) => {
+        if (isSearch) {
+            fetchPlayersByName(Number(page-1),pagination.query)
+            return
+        }
+        await fetchPlayers(Number(page - 1))
+    }
 
     useEffect(() => {
-        const slicedArray = sliceIntoChunks(info.players, 5)
-        setSlicedPlayers(slicedArray)
-        setPagination((prev) => { return { ...prev, total: slicedArray.length } })
+        fetchPlayers(0)
     }, [])
 
 
-    if (!slicedPlayers) {
+    if (!players) {
         return <h1>cargando</h1>
     }
     return (
         <motion.div exit={{ opacity: 0 }} className='jugadores-container' >
-            <Searcher info={info.players} setSlicedPlayers={setSlicedPlayers} setPagination={setPagination} />
-            <h4>RANKING JUGADORES</h4>
-            {!slicedPlayers[0]
+            <Searcher fetchPlayersByName={fetchPlayersByName} fetchPlayers={fetchPlayers} />
+            <h4>RANKING JUGADORES:</h4>
+            {!players[0]
                 ? <div>
                     <h5>Sin resultados...</h5>
                 </div>
-                : <Ranking home={false} info={{ isPlayer: true, arr: slicedPlayers[pagination.current] }} />
+                : <Ranking info={{ isPlayer: true, arr: players }} />
             }
-            <PaginationUI setPagination={setPagination} pages={pagination.total} />
+            <PaginationUI pagination={pagination} nextPage={nextPage} />
         </motion.div>
 
     )

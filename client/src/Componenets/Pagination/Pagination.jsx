@@ -1,14 +1,14 @@
 import Pagination from '@material-ui/lab/Pagination';
 import './pagination.scss'
 
-const PaginationComp = ({setPagination,pages}) => {
+const PaginationComp = ({nextPage,pagination}) => {
 
     const handleChange=(event,value)=>{
-        setPagination((prev)=>{return{...prev,current:value}})
+        nextPage(value,pagination.isSearch)
     }
     return (
         <div className='pagination-container'>
-            <Pagination count={pages-1} onChange={handleChange} />
+            <Pagination page={pagination.current} count={Number(pagination.total)} onChange={handleChange} />
         </div>
     )
 }

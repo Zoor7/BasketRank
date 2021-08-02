@@ -1,28 +1,29 @@
-import { useState } from 'react'
-import { sliceIntoChunks } from '../../utils/sliceArray'
+import { useEffect, useState } from 'react'
 
 import './searcher.scss'
 
-export const Searcher = ({ info, setSlicedPlayers, setPagination }) => {
+export const Searcher = ({fetchPlayersByName,fetchPlayers}) => {
 
-    const savedSlicedArray = info
+    const [query, setQuery] = useState('')
 
-    const handleChange = (event) => {
-        const value= event.target.value.toLowerCase()
-        console.log(info);
-        const filterArray = info.filter((item) =>item.username.toLowerCase().startsWith(value))
-        const slicedArray = sliceIntoChunks(filterArray, 5)
-        setPagination((prev) => { return { ...prev, total: slicedArray.length } })
-        setSlicedPlayers(slicedArray)
 
+    useEffect(() => {
+        const timeOutId = setTimeout(() => search(query), 700);
+        return () => clearTimeout(timeOutId);
+    }, [query])
+
+    const search = async (query) => {
+        if (query !== '') {
+            fetchPlayersByName(0,query)
+            return
+        }
+        fetchPlayers(0)
     }
 
 
     return (
         <div className='searcher-container'>
-
-            <input type="text" placeholder='Nombre Jugador' onChange={handleChange} />
-
+            <input type="text" placeholder='Nombre Jugador' onChange={event => setQuery(event.target.value)} />
         </div>
     )
 }

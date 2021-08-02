@@ -15,13 +15,13 @@ const playerSchema = new Schema({
     elo:{type:Number},
     team: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Team'
+        ref: 'Team',
     },
     rank:{type:Number},
     games:{type:Number},
     wins:{type:Number},
     defeats:{type:Number},
-    passwordHash: { type: String },
+    passwordHash: { type: String,required:true },
 },
     { timestamps: true }
 )
