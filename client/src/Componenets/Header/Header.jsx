@@ -41,7 +41,7 @@ const Header = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink activeClassName='active-nav-link' className='nav-link' to='/equipos'>
+                            <NavLink /*activeClassName='active-nav-link'*/ className='nav-link' to='/' exact>
                                 <GiBasketballJersey size='1.3rem' />
                                 <p>Equipos</p>
                             </NavLink>

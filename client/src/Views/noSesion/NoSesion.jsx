@@ -1,3 +1,5 @@
+import {useContext} from 'react'
+
 import useWindowSize from '../../Hooks/useWindowSize';
 import { motion } from 'framer-motion';
 
@@ -6,11 +8,22 @@ import giannis from '../../assets/images/giannis.jpg'
 import booker from '../../assets/images/db.jpg'
 
 import './noSesion.scss'
+import { saveUser } from '../../services/userStorage';
+import UserContext from '../../context/userContext';
+import { ADD_USER } from '../../context/reducers/userReducer';
 
 const NoSesion = () => {
 
 
     const { width } = useWindowSize()
+    const{userDispatch}=useContext(UserContext)
+
+
+    const handleSesion=async()=>{
+
+        userDispatch({type:ADD_USER,payload:{id:true}})
+        saveUser({user:true})
+    }
 
     return (
         <motion.div exit={{ opacity: 0 }} className="noSesion-container">
@@ -19,7 +32,7 @@ const NoSesion = () => {
                 <h1>BasketRank</h1>
                 <p>Puntua tus partidos, entra en el ranking, conoce jugadores y queda con ellos para jugar.</p>
                 <div className='noSesion-btn-container'>
-                    <button>Iniciar Sesion</button>
+                    <button onClick={handleSesion}>Iniciar Sesion</button>
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useContext } from 'react'
 import { motion } from 'framer-motion';
 import PlayerStats from '../../Componenets/PlayerStats/PlayerStats';
 import Ranking from '../../Componenets/Ranking/Ranking';
@@ -7,11 +7,14 @@ import GameButton from '../../Componenets/GameButton/GameButton';
 import { getPlayers } from '../../services/players';
 
 import './home.scss'
+import UserContext from '../../context/userContext';
 
 const Home = () => {
 
     const [players, setPlayers] = useState()
-    const [isLogged, setIsLogged] = useState(true)
+    const [isLogged, setIsLogged] = useState()
+
+    const{userState}=useContext(UserContext)
 
     useEffect(() => {
         const fetchPlayers = async () => {
@@ -20,6 +23,10 @@ const Home = () => {
         }
         fetchPlayers()
     }, [])
+    
+    useEffect(() => {
+        setIsLogged(userState.id)
+    }, [userState])
 
 
     if(!players){

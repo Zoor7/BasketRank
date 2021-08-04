@@ -1,8 +1,8 @@
 import { useEffect, useReducer,createContext } from "react";
 // import { login } from "../../services/authService";
 // import { getUserbyEmail } from "../../services/userService";
-// import { getUserStorage } from "../../services/userStorage";
-import { ADD_USER, userReducer } from "../reducers/userReducer";
+import { getUserStorage } from "../services/userStorage";
+import { ADD_USER, userReducer } from "./reducers/userReducer";
 
 const UserContext = createContext();
 
@@ -19,16 +19,16 @@ const initialState = {
 export const UserProvider = ({ children }) => {
   const [userState, userDispatch] = useReducer(userReducer, initialState);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const user = await getUserStorage();
-  //     if (user) {
-  //       const loggedUser = await getUserbyEmail({ email: user });
+  useEffect(() => {
+    (async () => {
+      const user = await getUserStorage();
 
-  //       userDispatch({ type: ADD_USER, payload: loggedUser[0] });
-  //     }
-  //   })();
-  // }, []);
+      if (user?.user) {
+      //   const loggedUser = await getUserbyEmail({ email: user });
+        userDispatch({ type: ADD_USER, payload: {id:true} });
+      }
+    })();
+  }, []);
 
   const values = {
     userState,
